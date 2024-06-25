@@ -38,6 +38,7 @@ import { getNotifications } from '../../services';
 import { SearchRequest } from '..';
 
 export function handleResponse(request: SearchRequest, response: SearchResponse<any>) {
+  console.log('EVENT: data received');
   if (response.timed_out) {
     getNotifications().toasts.addWarning({
       title: i18n.translate('data.search.searchSource.fetch.requestTimedOutNotificationMessage', {
