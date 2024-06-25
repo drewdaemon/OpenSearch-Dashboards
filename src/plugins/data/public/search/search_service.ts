@@ -133,6 +133,7 @@ export class SearchService implements Plugin<ISearchSetup, ISearchStart> {
     { fieldFormats, indexPatterns }: SearchServiceStartDependencies
   ): ISearchStart {
     const search = ((request, options) => {
+      console.log('EVENT: data requested');
       return this.searchInterceptor.search(request, options);
     }) as ISearchGeneric;
 
