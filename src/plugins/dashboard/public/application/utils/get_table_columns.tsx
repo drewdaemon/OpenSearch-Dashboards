@@ -27,7 +27,12 @@ export const getTableColumns = (
       sortable: true,
       render: (field: string, record: { viewUrl?: string; title: string }) => (
         <EuiLink
-          href={record.viewUrl}
+          onClick={() => {
+            const now = performance.now();
+            window.NAVIGATION_START_TIME = now;
+            console.log('EVENT: navigated to dashboard');
+            window.location.href = record.viewUrl!;
+          }}
           data-test-subj={`dashboardListingTitleLink-${record.title.split(' ').join('-')}`}
         >
           {field}
