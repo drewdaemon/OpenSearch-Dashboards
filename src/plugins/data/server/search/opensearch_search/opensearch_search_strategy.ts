@@ -89,7 +89,7 @@ export const opensearchSearchStrategyProvider = (
         const promise = shimAbortSignal(client.search(params), options?.abortSignal);
 
         const { body: rawResponse } = (await promise) as ApiResponse<SearchResponse<any>>;
-        console.log('SERVER EVENT: data received from Elasticsearch');
+        console.log('SERVER EVENT: data received from OpenSearch');
 
         if (usage) usage.trackSuccess(rawResponse.took);
 
