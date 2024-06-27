@@ -296,7 +296,9 @@ export class VisualizeEmbeddable
   };
 
   onContainerRender = () => {
-    console.log('EVENT: render complete');
+    console.log(
+      `EVENT: render complete (took ${performance.now() - window.DATA_REQUESTED_TIME}ms)`
+    );
     this.renderComplete.dispatchComplete();
     this.updateOutput({ loading: false, error: undefined });
   };

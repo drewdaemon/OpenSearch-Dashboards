@@ -133,7 +133,9 @@ export class SearchService implements Plugin<ISearchSetup, ISearchStart> {
     { fieldFormats, indexPatterns }: SearchServiceStartDependencies
   ): ISearchStart {
     const search = ((request, options) => {
-      console.log('EVENT: data requested');
+      const now = performance.now();
+      window.DATA_REQUESTED_TIME = now;
+      console.log(`EVENT: data requested (took ${now}ms)`);
       return this.searchInterceptor.search(request, options);
     }) as ISearchGeneric;
 
