@@ -186,6 +186,11 @@ export class Handler {
         if (loadedCount === chartSelection.length) {
           // events from all charts are propagated to vis, we only need to fire renderComplete once they all finish
           self.vis.emit('renderComplete');
+          window.requestAnimationFrame(() =>
+            console.log(
+              `EVENT: render complete (took ${performance.now() - window.DATA_REQUESTED_TIME}ms)`
+            )
+          );
         }
       });
 
